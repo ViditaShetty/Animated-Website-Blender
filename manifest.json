@@ -1,16 +1,16 @@
 {
   "name": "Website by Vidita",
-  "short_name": "Pipe",
+  "short_name": "PipeApp",
   "start_url": "index.html",
   "scope": "./",
   "icons": [
     {
-      "src": "images/.png",
+      "src": "images/rabbitLogo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "contract.png",
+      "src": "rabbitLogo2.png",
       "sizes": "512x512",
       "type": "image/png"
     }
