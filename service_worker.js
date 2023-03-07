@@ -1,17 +1,37 @@
-// Cached core static resources 
-self.addEventListener("install",e=>{
-  e.waitUntil(
-    caches.open("static").then(cache=>{
-      return cache.addAll(["./",'./images/logo192.png']);
+const staticCacheName = 'site-static-v1';
+const assets = [
+  '/',
+  '/index.html',
+  '/app.js',
+  '/style.css',
+  '/images/rabbitLogo.png',
+  'https://fonts.googleapis.com/css?family=Lato:300,400,700',
+];
+// install event
+self.addEventListener('install', evt => {
+  evt.waitUntil(
+    caches.open(staticCacheName).then((cache) => {
+      console.log('caching shell assets');
+      cache.addAll(assets);
     })
   );
 });
-
-// Fatch resources
-self.addEventListener("fetch",e=>{
-  e.respondWith(
-    caches.match(e.request).then(response=>{
-      return response||fetch(e.request);
+// activate event
+self.addEventListener('activate', evt => {
+  evt.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys
+        .filter(key => key !== staticCacheName)
+        .map(key => caches.delete(key))
+      );
+    })
+  );
+});
+// fetch event
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(cacheRes => {
+      return cacheRes || fetch(evt.request);
     })
   );
 });
