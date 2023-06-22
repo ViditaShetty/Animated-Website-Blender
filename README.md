@@ -1,2 +1,2 @@
 # pipe-ball-website
-Website made using Blender, gsap , HTML ,CSS , JS. 
+Animated Website made using Blender, Gsap, HTML, CSS and JS.
