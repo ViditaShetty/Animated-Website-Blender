@@ -39,8 +39,8 @@ gsap.fromTo(
     scrollTrigger: {
       scrub: 1,
 
-      start: "50%",
-      end: "60%",
+      start: "30%",
+      end: "40%",
     },
     onComplete: () => {
       gsap.to(".ball-text", { opacity: 0 });
